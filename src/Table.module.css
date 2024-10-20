@@ -1,0 +1,233 @@
+    /* BUTTONS */
+    div.buttons-section {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .btn-grid-edit {
+        background-color: #1971c2;
+        border: 1px solid #1864ab;
+    }
+
+    .btn-grid-edit:hover {
+        background-color: #1766b0;
+    }
+
+    .btn-grid-delete {
+        background-color: #e03131;
+        border: 1px solid #c92a2a;
+    }
+
+    .btn-grid-delete:hover {
+        background-color: #d12e2e;
+    }
+
+    .btn-cancel {
+        background-color: #868e96;
+        border: 1px solid #495057;
+    }
+
+    .btn-cancel:hover {
+        background-color: #6c7379;
+    }
+
+    .btn-submit,
+    .btn-cancel {
+        flex-basis: 120px;
+    }
+
+    #grid-redirect-btn {
+        margin-bottom: 20px;
+    }
+
+    /* TABLE */
+    .custom-table {
+        table-layout: fixed;
+    }
+
+    .operation-box {
+        display: flex;
+    }
+
+    .operation-box .right-box {
+        flex-grow: 10;
+    }
+
+    .operation-box .left-box {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+    .operation-box .left-box .per-page-item {
+        flex-basis: 110px;
+        display: flex;
+        gap: 10px;
+    }
+
+
+    /* PAGINATION */
+    .pagination-box {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .ul-table-pagination {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .ul-table-pagination>li {
+        position: relative;
+        display: block;
+        padding: 0.5rem 0.75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: #087f5b;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+    }
+
+    .ul-table-pagination>li[class*="active"] {
+        color: #fff;
+        background-color: #087f5b;
+        border-color: #087f5b;
+    }
+
+    .ul-table-pagination>li:hover {
+        color: #087f5b;
+        text-decoration: none;
+        background-color: #e9ecef;
+        border-color: #dee2e6;
+        cursor: pointer;
+    }
+
+    .ul-table-pagination>li:first-child,
+    .ul-table-pagination>li:last-child {
+        flex: 0 0 50px;
+    }
+
+
+    /* RESPONSIVE */
+    @media (min-width: 300px) {
+        .operation-box {
+            flex-direction: column-reverse;
+            gap: 10px;
+        }
+
+        .right-box {
+            display: flex;
+        }
+
+        .right-box button {
+            flex: 1;
+        }
+
+        .btn-grid-edit,
+        .btn-grid-delete {
+            display: none;
+        }
+
+        .btn-grid-mobile-edit,
+        .btn-grid-mobile-delete {
+            display: block;
+        }
+
+        .custom-table {
+            margin-bottom: 10px;
+        }
+
+        table th,
+        table tbody td {
+            font-size: 3vw;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        #total-records-text {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .pagination-box {
+            padding-top: 1rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .operation-box {
+            flex-direction: row;
+            margin-bottom: 1.6rem;
+        }
+
+        .operation-box .left-box .search-input-wrap {
+            flex: 3 1 0px;
+        }
+
+        .operation-box .left-box .per-page-item {
+            flex: 2 1 0px;
+        }
+
+        #grid-redirect-btn {
+            padding: 4px 18px;
+            margin: 0;
+            flex: none;
+        }
+
+        .operation-box .left-box {
+            gap: 10px;
+        }
+
+        .btn-grid-edit,
+        .btn-grid-delete {
+            display: block;
+        }
+
+        .btn-grid-mobile-edit,
+        .btn-grid-mobile-delete {
+            display: none;
+        }
+
+        table th,
+        table tbody td {
+            font-size: 2vw;
+        }
+    }
+
+    @media (min-width: 992px) {
+
+        table th,
+        table tbody td {
+            font-size: 1.4vw;
+        }
+    }
+
+    @media (min-width: 1200px) {
+
+
+        div#table-wrapper {
+            min-height: 500px;
+        }
+
+        div#select-option-wrapper {
+            justify-content: end;
+        }
+
+        div#per-page-item>#table-select-label {
+            padding-left: 0.5rem;
+        }
+
+        table th,
+        table tbody td {
+            font-size: 0.8vw;
+        }
+    }

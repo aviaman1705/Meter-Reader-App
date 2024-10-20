@@ -1,0 +1,15 @@
+/* #main-container {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    grid-template-rows: 1fr 220px;
+}
+
+
+main {
+    height: 100vh;
+}
+
+footer {
+    background-color: #087f5b;
+    grid-column: 1 / -1;
+} */

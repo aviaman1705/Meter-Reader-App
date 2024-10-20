@@ -1,0 +1,68 @@
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+/* MAIN COLOR:#087f5b */
+/* GREY COLOR: #343a40 */
+.panel-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.panel-item {
+    flex: 0 0 290px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 0px 8px;
+}
+
+.panel-item:nth-child(1) {
+    background-color: #0dd19b;
+}
+
+.panel-item:nth-child(2) {
+    background-color: #08d1dc;
+}
+
+.panel-item:nth-child(3) {
+    background-color: #019ddb;
+}
+
+.panel-item:nth-child(4) {
+    background-color: #176bc1;
+}
+
+.right {}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    stroke: #fff;
+}
+
+.text {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 450;
+}
+
+.left {
+    display: flex;
+    align-items: flex-end;
+}
+
+.amount {
+    margin: 0;
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+}

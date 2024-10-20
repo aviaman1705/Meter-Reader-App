@@ -1,0 +1,11 @@
+/* div#notebooks-container {
+    background-color: #E5E5E5;
+    padding: 3em 3em 6em 3em;
+} */
+
+select#table-select-option {
+    width: auto;
+    display: inline-block;
+    padding: 0.5em 1.75em 0.5em 1.75em;
+    margin: 0em 0.25em;
+}

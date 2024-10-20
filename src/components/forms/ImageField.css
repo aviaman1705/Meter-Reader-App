@@ -1,0 +1,11 @@
+.image-field-container.mb-3 {
+    display: flex;
+}
+
+.image-field-span {
+    flex: 0 0 10%;
+}
+
+div#image-field-input {
+    flex: 0 0 75%;
+}
