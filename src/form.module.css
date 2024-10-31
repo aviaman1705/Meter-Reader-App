@@ -241,12 +241,6 @@ input[type=file] {
 
 /* 300px */
 @media only screen and (min-width: 300px) and (max-width:767px) {
-  /* fieldset {
-    width: 40%;
-    min-width: 320px;
-    margin-left: auto;
-  } */
-
   legend {
     font-style: 1.75em;
   }
