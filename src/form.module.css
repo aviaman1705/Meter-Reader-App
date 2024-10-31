@@ -176,10 +176,10 @@ input {
   border: solid 1px #999;
 }
 
-input[type="email"],
+/* input[type="email"],
 input[type="text"] {
   width: 15em;
-}
+} */
 
 textarea {
   min-height: 8em;
