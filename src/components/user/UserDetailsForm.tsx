@@ -1,10 +1,9 @@
-import { ChangeEvent, useState } from "react";
 import { Form, Formik, FormikHelpers } from "formik";
-import { editUserDTO } from "./user.models";
 import { userDetailsSchema } from "../../Schema";
 import TextField from "../forms/TextField";
 import Button from "../../utils/Button";
 import ImageField from "../forms/ImageField";
+import { editUserDTO } from "./user.models";
 
 import classes from "../../Form.module.css";
 
@@ -39,16 +38,11 @@ export default function UserDetailsForm(props: UserDetailsFormProps) {
               type="text"
               placeholder="הזן פלאפון"
             />
-            <ImageField
-              label="תמונה"
-              name="image"
-              imageURL={props.model.image}
-              onSelect={props.onSelect}
-            />
+            <ImageField label="תמונה" name="image" onSelect={props.onSelect} />
             <Button
               disabled={formikProps.isSubmitting}
               type="submit"
-              id="submit"
+              id={classes["submit"]}
             >
               שמור שינויים
             </Button>

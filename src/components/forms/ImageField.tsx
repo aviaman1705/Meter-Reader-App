@@ -1,10 +1,14 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import { useField } from "formik";
 
 import classes from "../../Form.module.css";
 
 export default function ImageField(props: imageFieldProps) {
   const defaultImageSrc = "/images/logo192.png";
-  const [imageURL, setImageURL] = useState(props.imageURL);
+
+  const customProp = { label: props.label, type: props.type, name: props.name };
+  const [field, meta] = useField(customProp);
+  const [imageURL, setImageURL] = useState<string>("");
 
   useEffect(() => {}, [imageURL]);
 
@@ -26,25 +30,29 @@ export default function ImageField(props: imageFieldProps) {
     <div id={classes["image-form-container"]}>
       <label htmlFor={props.name}>{props.label}</label>
       <input
-        id="image-upload"
+        id={props.name}
         name={props.name}
         className={"form-control"}
         type="file"
         accept="image/*"
         onChange={showPreview}
       />
-      <img src={imageURL} />
+      {!imageURL ? (
+        <img id="img-field" src={field.value} />
+      ) : (
+        <img id="img-url" src={imageURL} />
+      )}
     </div>
   );
 }
 
 interface imageFieldProps {
   label: string;
-  imageURL: string;
   name: string;
+  type: "file";
   onSelect?(file: File): void;
 }
 
 ImageField.defaultProps = {
-  imageURL: "",
+  type: "file",
 };

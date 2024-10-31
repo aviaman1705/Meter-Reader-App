@@ -37,9 +37,16 @@ export const loginSchema = yup.object().shape({
 export const userDetailsSchema = yup.object().shape({
   userName: yup
     .string()
-    .min(2, "שם חייב להכיל להכיל 2 תווים לפחות")
-    .required("חובה להזין שם"),
-  email: yup.string().email("הזן מייל תקין").required("חובה להזין מייל"),
+    .required("שם משתמש הוא שדה חובה")
+    .min(2, "שם משתמש חייב להכיל 2 תווים לפחות"),
+  email: yup.string().required("מייל הוא שדה חובה").email("שדה מייל לא תקין"),
+  phone: yup
+    .string()
+    .required("טלפון הוא שדה חובה")
+    .matches(
+      /[0]{1}[2-9]{1,2}\-?[0-9]{7}/,
+      "שדה טלפון חייב להיות עם קידומית מישראל"
+    ),
 });
 
 export const trackSchema = yup.object({

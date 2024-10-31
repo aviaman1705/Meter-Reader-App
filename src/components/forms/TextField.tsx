@@ -30,7 +30,7 @@ export default function TextField(props: textFieldProps) {
 interface textFieldProps {
   label: string;
   name: string;
-  type: "text" | "password" | "date" | "number" | "email" | "file";
+  type: "text" | "password" | "date" | "number" | "email" | "num";
   placeholder: string;
 }
 

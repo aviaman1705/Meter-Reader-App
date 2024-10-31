@@ -239,16 +239,16 @@ input[type=file] {
   margin-top: .5em;
 }
 
-/* Large screen rules */
-@media screen and (min-width:430px) {
-  legend {
-    font-style: 1.75em;
-  }
-
-  fieldset {
+/* 300px */
+@media only screen and (min-width: 300px) and (max-width:767px) {
+  /* fieldset {
     width: 40%;
     min-width: 320px;
     margin-left: auto;
+  } */
+
+  legend {
+    font-style: 1.75em;
   }
 
   .checks label {
@@ -256,5 +256,41 @@ input[type=file] {
     padding-top: 0.5em;
     margin-top: 0;
     margin-right: 0.5em;
+  }
+
+  input[type="email"],
+  input[type="text"] {
+    width: 100%;
+  }
+
+  #image-form-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  button#submit {
+    width: 100%;
+  }
+}
+
+/* 768px */
+@media (min-width: 768px) {
+  #image-form-container img {
+    max-height: 140px;
+  }
+}
+
+@media (min-width: 992px) {
+  fieldset {
+    width: 70%;
+    min-width: 320px;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  fieldset {
+    width: 30%;
   }
 }

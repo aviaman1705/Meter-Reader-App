@@ -7,17 +7,27 @@ import UserDetailsForm from "./UserDetailsForm";
 import DisplayErrors from "../../utils/DisplayErrors";
 import Loading from "../../utils/Loading";
 
+import classes from "./UserDetails.module.css";
+
 export default function UserDetails() {
-  const [userDetails, setUserDetails] = useState<editUserDTO>();
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<string[]>([]);
+  const [errors, setErrors] = useState<[]>([]);
+  const [userDetails, setUserDetails] = useState<editUserDTO>({
+    userName: "",
+    email: "",
+    phone: "",
+    image: "",
+    imageFile: null,
+  });
 
   useEffect(() => {
-    getUserDetails();
+    setLoading(true);
+    setTimeout(() => {
+      getUserDetails();
+    }, 2000);
   }, []);
 
   const getUserDetails = () => {
-    setLoading(true);
     axios
       .get(`${urlAccounts}/GetUserDetails`)
       .then((response: AxiosResponse<editUserDTO>) => {
@@ -31,7 +41,7 @@ export default function UserDetails() {
 
   const update = (editUserDTO: editUserDTO) => {
     setLoading(true);
-    const formData = convertUserDetailsToFormData(userDetails);
+    const formData = convertUserDetailsToFormData(editUserDTO);
     axios({
       method: "post",
       url: `${urlAccounts}/UpdateUserDetails`,
@@ -45,7 +55,8 @@ export default function UserDetails() {
         }, 2000);
       })
       .catch((error) => {
-        console.log(error);
+        setErrors(error.response.data);
+        setLoading(false);
       });
   };
 
@@ -55,27 +66,21 @@ export default function UserDetails() {
 
   return (
     <>
-      <h1>עמוד פרופיל</h1>
+      <h1 id={classes["user-details-page-title"]}>עמוד פרופיל</h1>
 
-      <div className="container">
-        <div className="main-body">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="card">
-                <div className="card-body">
-                  <DisplayErrors errors={errors} />
-                  {userDetails ? (
-                    <UserDetailsForm
-                      model={userDetails}
-                      onSubmit={(values) => update(values)}
-                      onSelect={(file: File) => selectImageHandler(file)}
-                    >
-                      {loading === true ? (
-                        <Loading left="40%" top="40%" />
-                      ) : null}
-                    </UserDetailsForm>
-                  ) : null}
-                </div>
+      <div className="main-body">
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="card">
+              <div className="card-body">
+                <DisplayErrors errors={errors} />
+                <UserDetailsForm
+                  model={userDetails}
+                  onSubmit={(values) => update(values)}
+                  onSelect={(file: File) => selectImageHandler(file)}
+                >
+                  {loading === true ? <Loading left="40%" top="40%" /> : null}
+                </UserDetailsForm>
               </div>
             </div>
           </div>

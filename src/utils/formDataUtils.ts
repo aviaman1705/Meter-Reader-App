@@ -70,7 +70,7 @@ function formatDate(date: Date) {
 
 
 export function convertUserDetailsToFormData(userDetails: editUserDTO): FormData {
-    debugger
+
     const formData = new FormData();
 
     formData.append('userName', userDetails.userName);
