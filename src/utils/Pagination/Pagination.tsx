@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import classes from "./Pagination.module.css";
+import Button from "../Button";
 
 export default function Pagination(props: paginationProps) {
   const [linkModels, setLinkModels] = useState<linkModel[]>([]);
@@ -78,7 +79,7 @@ export default function Pagination(props: paginationProps) {
       {linkModels.map((link) => {
         if (link.text === "הקודם") {
           return (
-            <button
+            <Button
               className={classes["btn"]}
               disabled={props.currentPage === 1}
               key={link.text}
@@ -96,12 +97,12 @@ export default function Pagination(props: paginationProps) {
                   clipRule="evenodd"
                 />
               </svg>
-            </button>
+            </Button>
           );
         }
         if (link.text === "הבא") {
           return (
-            <button
+            <Button
               className={classes["btn"]}
               disabled={props.currentPage === props.totalAmontOfPages}
               key={link.text}
@@ -119,7 +120,7 @@ export default function Pagination(props: paginationProps) {
                   clipRule="evenodd"
                 />
               </svg>
-            </button>
+            </Button>
           );
         } else {
           return (

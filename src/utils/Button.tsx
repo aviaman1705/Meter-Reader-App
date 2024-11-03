@@ -18,7 +18,7 @@ export default function Button(props: buttonProps) {
 interface buttonProps {
   id: string;
   className: string;
-  onClick?(): void;
+  onClick?(e?: any): void;
   disabled: boolean;
   children: React.ReactNode;
   type: "button" | "submit";
