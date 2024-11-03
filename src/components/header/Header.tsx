@@ -4,6 +4,7 @@ import utf8 from "utf8";
 import { logout } from "../auth/handleJWT";
 import AuthenticationContext from "../auth/AuthenticationContext";
 import Authorized from "../auth/Authorized";
+import Button from "../../utils/Button";
 
 export default function Header() {
   const { update, claims } = useContext(AuthenticationContext);
@@ -27,8 +28,7 @@ export default function Header() {
         style={{ marginBottom: 0 }}
       >
         <div className="navbar-header">
-          <button
-            type="button"
+          <Button
             className="navbar-toggle"
             data-toggle="collapse"
             data-target=".navbar-collapse"
@@ -37,13 +37,12 @@ export default function Header() {
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
-          </button>
+          </Button>
 
           <NavLink className="navbar-brand" to="/">
             מערכת קריאת מונים
           </NavLink>
         </div>
-        {/* <!-- /.navbar-header --> */}
 
         <Authorized
           authorized={

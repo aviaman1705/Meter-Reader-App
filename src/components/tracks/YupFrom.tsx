@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import Button from "../../utils/Button";
 
 export default function YupFrom() {
   const SignupSchema = Yup.object().shape({
@@ -41,7 +42,9 @@ export default function YupFrom() {
             ) : null}
             <Field name="email" type="email" />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <button type="submit">Submit</button>
+            <Button type="submit" title="Submit">
+              Submit
+            </Button>
           </Form>
         )}
       </Formik>

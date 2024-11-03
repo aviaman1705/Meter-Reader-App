@@ -9,6 +9,7 @@ import { TbArrowsMoveVertical } from "react-icons/tb";
 import classes from "./Sidebar.module.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import SearchContext from "../../store/search-context";
+import Button from "../../utils/Button";
 
 export default function Sidebar() {
   const inputRef = useRef(null);
@@ -45,14 +46,14 @@ export default function Sidebar() {
                   ref={inputRef}
                 />
                 <span className="input-group-btn">
-                  <button
+                  <Button
                     className="btn btn-default"
-                    type="button"
                     disabled={isDisabeld}
+                    title="חפש"
                     onClick={searchHandler}
                   >
                     <i className="fa fa-search"></i>
-                  </button>
+                  </Button>
                 </span>
               </div>
               {/* <!-- /input-group --> */}

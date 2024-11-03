@@ -37,9 +37,9 @@ const RegisterForm = (props: registerFormProps) => {
             type="password"
             placeholder="הזן סיסמא"
           />
-          <button type="submit" disabled={props.isSubmitting}>
-            הרשם
-          </button>
+          <Button type="submit" title="הרשמה" disabled={props.isSubmitting}>
+            הרשמה
+          </Button>
         </Form>
       )}
     </Formik>

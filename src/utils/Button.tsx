@@ -7,6 +7,7 @@ export default function Button(props: buttonProps) {
         className={props.className}
         title={props.title}
         onClick={props.onClick}
+        {...props}
       >
         {props.children}
       </button>
@@ -25,8 +26,8 @@ interface buttonProps {
 }
 
 Button.defaultProps = {
-  id: "",
-  className: "",
+  id: undefined,
+  className: undefined,
   type: "button",
   disabled: false,
   title: "",

@@ -67,7 +67,6 @@ export default function UserDetails() {
   return (
     <>
       <h1 id={classes["user-details-page-title"]}>עמוד פרופיל</h1>
-
       <div className="main-body">
         <div className="row">
           <div className="col-lg-12">

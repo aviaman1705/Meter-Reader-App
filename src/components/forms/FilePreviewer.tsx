@@ -1,4 +1,5 @@
 import { useState, useRef, ChangeEvent } from "react";
+import Button from "../../utils/Button";
 
 export default function FilePreviewer(props: FilePreviewerProps) {
   const [imagePreview, setImagePreview] = useState(null);
@@ -37,12 +38,12 @@ export default function FilePreviewer(props: FilePreviewerProps) {
           type="file"
           hidden
         />
-        <button className="btn" onClick={() => filePicekerRef.current.click()}>
-          Choose
-        </button>
-        <button className="btn" onClick={clearFiles}>
-          x
-        </button>
+        <Button className="btn" onClick={() => filePicekerRef.current.click()}>
+          בחר
+        </Button>
+        <Button className="btn" onClick={clearFiles}>
+          X
+        </Button>
       </div>
       <div className="preview">
         {imagePreview != null && <img src={imagePreview} alt="" />}

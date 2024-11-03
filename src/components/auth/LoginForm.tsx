@@ -30,9 +30,9 @@ const LoginForm = (props: loginFormProps) => {
             type="password"
             placeholder="הזן סיסמא"
           />
-          <button type="submit" disabled={props.isSubmitting}>
-            הכנס
-          </button>
+          <Button type="submit" title="כניסה" disabled={props.isSubmitting}>
+            כניסה
+          </Button>
         </Form>
       )}
     </Formik>

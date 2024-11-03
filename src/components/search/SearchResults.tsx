@@ -6,6 +6,7 @@ import { urlSearch } from "../../endpoints";
 import { useHistory, useParams } from "react-router-dom";
 
 import classes from "./SearchResults.module.css";
+import Button from "../../utils/Button";
 
 export default function SearchResults() {
   const [data, setData] = useState<searchResultsDTO[]>([]);
@@ -39,7 +40,7 @@ export default function SearchResults() {
           <h4>תוצאות חיפוש</h4>
           <div className={classes["tooltip-demo"]}>
             {data.map((item: searchResultsDTO) => (
-              <button
+              <Button
                 type="button"
                 className="btn btn-default"
                 data-toggle="tooltip"
@@ -50,7 +51,7 @@ export default function SearchResults() {
                 }}
               >
                 {item.title}
-              </button>
+              </Button>
             ))}
           </div>
           <br />

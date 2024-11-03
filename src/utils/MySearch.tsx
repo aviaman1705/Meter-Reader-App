@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 export default function MySearch(props: mySearchProps) {
   let input: any = "";
 
@@ -14,9 +16,9 @@ export default function MySearch(props: mySearchProps) {
         ref={(n) => (input = n)}
         type="text"
       />
-      <button className="btn btn-warning" onClick={handleClick}>
+      <Button className="btn btn-warning" title="חפש" onClick={handleClick}>
         חפש
-      </button>
+      </Button>
     </div>
   );
 }
