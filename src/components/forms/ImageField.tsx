@@ -7,8 +7,8 @@ export default function ImageField(props: imageFieldProps) {
   const defaultImageSrc = "/images/logo192.png";
 
   const customProp = { label: props.label, type: props.type, name: props.name };
-  const [field, meta] = useField(customProp);
-  const [imageURL, setImageURL] = useState<string>("");
+  const [field, meta] = useField<any>(customProp);
+  const [imageURL, setImageURL] = useState<string>(field.value);
 
   useEffect(() => {}, [imageURL]);
 
@@ -17,12 +17,12 @@ export default function ImageField(props: imageFieldProps) {
       let imageFile = e.target.files[0];
       const reader = new FileReader();
       reader.onload = (x) => {
-        setImageURL(x.target.result as string);
+        setImageURL((prevState) => x.target.result as string);
       };
       reader.readAsDataURL(imageFile);
       props.onSelect(imageFile);
     } else {
-      setImageURL(defaultImageSrc);
+      setImageURL((prevState) => prevState);
     }
   };
 
@@ -37,11 +37,8 @@ export default function ImageField(props: imageFieldProps) {
         accept="image/*"
         onChange={showPreview}
       />
-      {!imageURL ? (
-        <img id="img-field" src={field.value} />
-      ) : (
-        <img id="img-url" src={imageURL} />
-      )}
+
+      <img id="img-url" src={imageURL} alt={field.name} title={field.name} />
     </div>
   );
 }
