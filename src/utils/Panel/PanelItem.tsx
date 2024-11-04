@@ -1,36 +1,39 @@
+import { NavLink } from "react-router-dom";
+
 import classes from "./Panel.module.css";
 
 export default function PanelItem(props: panelItemlProps) {
   return (
-    <div className={classes["panel-item"]}>
-      <div className={classes["right"]}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className={classes["icon"]}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
-          />
-        </svg>
-        <p className={classes["text"]}>{props.header}</p>
-      </div>
-      <div className={classes["left"]}>
-        <p className={classes["amount"]}>{props.text}</p>
+    <div className="col-lg-4 col-md-6">
+      <div className="panel panel-success">
+        <div className="panel-heading">
+          <div className="row">
+            <div className="col-xs-4">
+              <i className="fa fa-comments fa-5x"></i>
+            </div>
+            <div className="col-xs-8 text-right">
+              <div className={classes["cart-item-home-title"]}>
+                {props.value}
+              </div>
+              <div>{props.text}</div>
+            </div>
+          </div>
+        </div>
+
+        <NavLink exact={true} to={props.link}>
+          <div className="panel-footer">
+            <div className="clearfix"></div>
+          </div>
+        </NavLink>
       </div>
     </div>
   );
 }
 
 interface panelItemlProps {
-  onClick?(): void;
-  header: string;
+  value: string;
   text: string;
+  link: string;
 }
 
 PanelItem.defaultProps = {

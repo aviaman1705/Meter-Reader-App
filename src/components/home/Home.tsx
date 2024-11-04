@@ -1,18 +1,13 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 import { urlTracks } from "../../endpoints";
-import { dashboardDTO, dashboardSummaryDTO } from "./dashboard.models";
-import Chart from "../../utils/Chart/Chart";
+import { dashboardSummaryDTO } from "./dashboard.models";
 import Panel from "../../utils/Panel/Panel";
-import BarChartItem from "../../utils/Chart/BarChartItem/BarChartItem";
-import { NavLink } from "react-router-dom";
-import SearchContext from "../../store/search-context";
+import Chart from "../../utils/Chart/Chart";
 
 import classes from "./Home.module.css";
 
 export default function Home() {
-  const [chartData, setChartData] = useState([]);
-  const searchCtx = useContext(SearchContext);
   const [dashboardSummary, setDashboardSummary] = useState<dashboardSummaryDTO>(
     {
       called: 0,
@@ -51,167 +46,14 @@ export default function Home() {
       </div>
 
       <div className="row">
-        {searchCtx.items.map((item) => (
-          <div>{item.title}</div>
-        ))}
-        <div className="col-lg-4 col-md-6">
-          <div className="panel panel-primary">
-            <div className="panel-heading">
-              <div className="row">
-                <div className="col-xs-4">
-                  <i className="fa fa-comments fa-5x"></i>
-                </div>
-                <div className="col-xs-8 text-right">
-                  <div className={classes["cart-item-home-title"]}>
-                    {dashboardSummary.called}
-                  </div>
-                  <div>נקרא</div>
-                </div>
-              </div>
-            </div>
-
-            <NavLink exact={true} to="/tracks">
-              <div className="panel-footer">
-                <div className="clearfix"></div>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-6">
-          <div className="panel panel-green">
-            <div className="panel-heading">
-              <div className="row">
-                <div className="col-xs-4">
-                  <i className="fa fa-tasks fa-5x"></i>
-                </div>
-                <div className="col-xs-8 text-right">
-                  <div className={classes["cart-item-home-title"]}>
-                    {dashboardSummary.unCalled}
-                  </div>
-                  <div>לא נקרא</div>
-                </div>
-              </div>
-            </div>
-            <NavLink exact={true} to="/tracks">
-              <div className="panel-footer">
-                <div className="clearfix"></div>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-6">
-          <div className="panel panel-yellow">
-            <div className="panel-heading">
-              <div className="row">
-                <div className="col-xs-4">
-                  <i className="fa fa-shopping-cart fa-5x"></i>
-                </div>
-                <div className="col-xs-8 text-right">
-                  <div className={classes["cart-item-home-title"]}>
-                    {dashboardSummary.unCalledPercentage}
-                  </div>
-                  <div>אחוזי אי קריאה</div>
-                </div>
-              </div>
-            </div>
-            <NavLink exact={true} to="/tracks">
-              <div className="panel-footer">
-                <div className="clearfix"></div>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-
-        <div className="col-lg-4 col-md-6">
-          <div className="panel panel-red">
-            <div className="panel-heading">
-              <div className="row">
-                <div className="col-xs-4">
-                  <i className="fa fa-support fa-5x"></i>
-                </div>
-                <div className="col-xs-8 text-right">
-                  <div className={classes["cart-item-home-title"]}>
-                    {dashboardSummary.highestUnCalledTrack?.desc}
-                  </div>
-                  <div>המסלול הגרוע</div>
-                </div>
-              </div>
-            </div>
-            <NavLink
-              exact={true}
-              to={`/tracks/edit/${dashboardSummary.highestUnCalledTrack?.id}`}
-            >
-              <div className="panel-footer">
-                <div className="clearfix"></div>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-6">
-          <div className="panel panel-primary">
-            <div className="panel-heading">
-              <div className="row">
-                <div className="col-xs-4">
-                  <i className="fa fa-shopping-cart fa-5x"></i>
-                </div>
-                <div className="col-xs-8 text-right">
-                  <div className={classes["cart-item-home-title"]}>
-                    {dashboardSummary.lowestUnCalledTrack?.desc}
-                  </div>
-                  <div>המסלול המצויין</div>
-                </div>
-              </div>
-            </div>
-            <NavLink
-              exact={true}
-              to={`/tracks/edit/${dashboardSummary.lowestUnCalledTrack?.id}`}
-            >
-              <div className="panel-footer">
-                <div className="clearfix"></div>
-              </div>
-            </NavLink>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-6">
-          <div className="panel panel-green">
-            <div className="panel-heading">
-              <div className="row">
-                <div className="col-xs-4">
-                  <i className="fa fa-support fa-5x"></i>
-                </div>
-                <div className="col-xs-8 text-right">
-                  <div className={classes["cart-item-home-title"]}>
-                    {dashboardSummary.popularNotebook?.desc}
-                  </div>
-                  <div>המסלול הנפוץ</div>
-                </div>
-              </div>
-            </div>
-            <NavLink
-              exact={true}
-              to={`/notebooks/edit/${dashboardSummary.popularNotebook?.id}`}
-            >
-              <div className="panel-footer">
-                <div className="clearfix"></div>
-              </div>
-            </NavLink>
-          </div>
-        </div>
+        <Panel data={dashboardSummary} />
       </div>
 
       <div className="row">
-        <div className="col-lg-6">
-          <h2 className="text-center">גרף קריאות</h2>
-          <BarChartItem data={dashboardSummary.calledsPerMonths} name="נקרא" />
-        </div>
-        <div className="col-lg-6">
-          <h2 className="text-center">גרף אי קריאות</h2>
-          <BarChartItem
-            data={dashboardSummary.unCalledsPerMonths}
-            name="לא נקרא"
-            color="#343a40"
-          />
-        </div>
+        <Chart
+          calledsPerMonths={dashboardSummary.calledsPerMonths}
+          unCalledsPerMonths={dashboardSummary.unCalledsPerMonths}
+        />
       </div>
     </>
   );

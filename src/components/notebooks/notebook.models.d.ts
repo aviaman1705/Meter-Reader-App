@@ -7,6 +7,6 @@ export interface notebookDTO {
 export interface popularNotebookDTO {
   id: number;
   number: number;
-  desc: number;
+  desc: string;
   numberOfRaces: number;
 }
