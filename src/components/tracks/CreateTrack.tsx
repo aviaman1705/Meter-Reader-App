@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { urlNotebooks, urlTracks } from "../../endpoints";
 import DisplayErrors from "../../utils/DisplayErrors";
@@ -25,6 +25,10 @@ export default function CreateTrack() {
   const [notebooks, setNotebooks] = useState<selectList[]>([]);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    GetNotebooks();
+  }, []);
 
   const GetNotebooks = () => {
     axios
