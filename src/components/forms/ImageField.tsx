@@ -10,7 +10,9 @@ export default function ImageField(props: imageFieldProps) {
   const [field, meta] = useField<any>(customProp);
   const [imageURL, setImageURL] = useState<string>(field.value);
 
-  useEffect(() => {}, [imageURL]);
+  useEffect(() => {
+    setImageURL(field.value);
+  }, [field.value]);
 
   const showPreview = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
