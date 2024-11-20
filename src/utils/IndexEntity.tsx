@@ -53,7 +53,7 @@ export default function IndexEntity<T>(props: indexEntityProps<T>) {
 
         setTotalItems(response.data.iTotalRecords);
         setTotalAmontOfPages(Math.ceil(totalAmontOfRecords / itemsPerPage));
-        setItemsPerPage(totalAmontOfRecords);
+        setItemsPerPage(itemsPerPage);
         setEntities(response.data.aaData);
         setLoading(false);
       })
