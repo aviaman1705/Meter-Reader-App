@@ -11,8 +11,8 @@ export default function IndexTracks() {
   const ascIcon = `url("./../icons/sort_asc.png")`;
   const descIcon = `url("./../icons/sort_desc.png")`;
 
-  const [sortColumn, setSortColumn] = useState("number");
-  const [sortType, setSortType] = useState<string>("asc");
+  const [sortColumn, setSortColumn] = useState("date");
+  const [sortType, setSortType] = useState<string>("desc");
   const [columns, setColumns] = useState([
     {
       dataKey: "id",
