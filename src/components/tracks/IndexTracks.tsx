@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import axios, { AxiosResponse, AxiosError } from "axios";
+import moment from "moment";
 import { urlTracks } from "../../endpoints";
-import customConfirm from "../../utils/customConfirm";
 import { trackGridItemDTO } from "./track.models";
 import IndexEntity from "../../utils/IndexEntity";
 
@@ -136,7 +134,7 @@ export default function IndexTracks() {
             {tracks?.map((track) => (
               <tr key={track.id}>
                 <td>{track.id}</td>
-                <td>{track.toDate}</td>
+                <td>{moment(track.toDate).format("DD/MM/YYYY")}</td>
                 <td>{track.notebookNumber}</td>
                 <td>{track.desc}</td>
                 <td>{track.called}</td>
