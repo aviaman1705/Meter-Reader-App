@@ -59,7 +59,7 @@ export default function Sidebar() {
               {/* <!-- /input-group --> */}
             </li>
             <li>
-              <NavLink activeClassName="active" to="/">
+              <NavLink activeClassName="active" to="/" exact={true}>
                 <i className="fa fa-dashboard fa-fw"></i> מסך ראשי
               </NavLink>
             </li>
