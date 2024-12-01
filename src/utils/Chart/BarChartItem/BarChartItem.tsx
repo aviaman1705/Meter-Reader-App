@@ -17,7 +17,7 @@ export default function BarChartItem(props: BarChartItemProps) {
     <ResponsiveContainer
       className={classes["recharts-responsive-container"]}
       width="100%"
-      height={500}
+      height={400}
     >
       <BarChart
         width={100}
