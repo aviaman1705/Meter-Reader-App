@@ -74,7 +74,10 @@ export const trackSchema = yup.object({
       "שדה עד תאריך חייב להיות גדול הוא שווה לשדה מ-תאריך"
     )
     .required("שדה עד תאריך הוא שדה חובה!"),
-  notebookId: yup.string().required("חובה לבחור מספר פנקס!"),
+  notebookId: yup
+    .number()
+    .typeError("שדה פנקס הוא שדה חובה!")
+    .required("שדה פנקס הוא שדה חובה!"),
   desc: yup
     .string()
     .required("שדה תיאור הוא שדה חובה!")
