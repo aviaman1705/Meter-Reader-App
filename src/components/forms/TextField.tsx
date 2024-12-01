@@ -6,7 +6,7 @@ export default function TextField(props: textFieldProps) {
   const [field, meta] = useField(props);
 
   return (
-    <>
+    <div className={classes["form-group"]}>
       <label htmlFor={props.name}>{props.label}</label>
       <input
         {...field}
@@ -23,7 +23,7 @@ export default function TextField(props: textFieldProps) {
       {meta.touched && meta.error && (
         <div className={classes["error"]}>{meta.error}</div>
       )}
-    </>
+    </div>
   );
 }
 
