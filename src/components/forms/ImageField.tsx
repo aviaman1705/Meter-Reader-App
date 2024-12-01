@@ -40,7 +40,9 @@ export default function ImageField(props: imageFieldProps) {
         onChange={showPreview}
       />
 
-      <img id="img-url" src={imageURL} alt={field.name} title={field.name} />
+      {imageURL ? (
+        <img id="img-url" src={imageURL} alt={field.name} title={field.name} />
+      ) : null}
     </div>
   );
 }
