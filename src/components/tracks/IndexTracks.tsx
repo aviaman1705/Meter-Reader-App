@@ -117,38 +117,44 @@ export default function IndexTracks() {
   };
 
   return (
-    <div className={`${classes["grid-container"]}`}>
-      <h1 className={`${classes["grid-title"]}`}>רשימת מסלולים</h1>
-      <IndexEntity<trackGridItemDTO>
-        btnLink="/tracks/create"
-        btnText="הוספת מסלול"
-        options={options}
-        columns={columns}
-        onSorting={onSorting}
-        url={urlTracks}
-        sortColumn={sortColumn}
-        sortType={sortType}
-      >
-        {(tracks, buttons) => (
-          <tbody>
-            {tracks?.map((track) => (
-              <tr key={track.id}>
-                <td>{track.id}</td>
-                <td>{moment(track.toDate).format("DD/MM/YYYY")}</td>
-                <td>{track.notebookNumber}</td>
-                <td>{track.desc}</td>
-                <td>{track.called}</td>
-                <td>{track.unCalled}</td>
-                {buttons(
-                  track.id.toString(),
-                  `/tracks/edit/${track.id}`,
-                  track.id
-                )}
-              </tr>
-            ))}
-          </tbody>
-        )}
-      </IndexEntity>
-    </div>
+    <>
+      <div className="row">
+        <div className="col-lg-12">
+          <h1 className="page-header">רשימת מסלולים</h1>
+        </div>
+        <div className="col-lg-12">
+          <IndexEntity<trackGridItemDTO>
+            btnLink="/tracks/create"
+            btnText="הוספת מסלול"
+            options={options}
+            columns={columns}
+            onSorting={onSorting}
+            url={urlTracks}
+            sortColumn={sortColumn}
+            sortType={sortType}
+          >
+            {(tracks, buttons) => (
+              <tbody>
+                {tracks?.map((track) => (
+                  <tr key={track.id}>
+                    <td>{track.id}</td>
+                    <td>{moment(track.toDate).format("DD/MM/YYYY")}</td>
+                    <td>{track.notebookNumber}</td>
+                    <td>{track.desc}</td>
+                    <td>{track.called}</td>
+                    <td>{track.unCalled}</td>
+                    {buttons(
+                      track.id.toString(),
+                      `/tracks/edit/${track.id}`,
+                      track.id
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            )}
+          </IndexEntity>
+        </div>
+      </div>
+    </>
   );
 }

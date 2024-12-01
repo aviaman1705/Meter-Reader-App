@@ -65,26 +65,30 @@ export default function UserDetails() {
   };
 
   return (
-    <>
-      <h1 id={classes["user-details-page-title"]}>עמוד פרופיל</h1>
-      <div className="main-body">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="card">
-              <div className="card-body">
-                <DisplayErrors errors={errors} />
-                <UserDetailsForm
-                  model={userDetails}
-                  onSubmit={(values) => update(values)}
-                  onSelect={(file: File) => selectImageHandler(file)}
-                >
-                  {loading === true ? <Loading left="40%" top="40%" /> : null}
-                </UserDetailsForm>
+    <div className="row">
+      <div className="col-lg-12">
+        <h1 className="page-header">עמוד פרופיל</h1>
+      </div>
+      <div className="col-lg-12">
+        <div className="main-body">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="card">
+                <div className="card-body">
+                  <DisplayErrors errors={errors} />
+                  <UserDetailsForm
+                    model={userDetails}
+                    onSubmit={(values) => update(values)}
+                    onSelect={(file: File) => selectImageHandler(file)}
+                  >
+                    {loading === true ? <Loading left="40%" top="40%" /> : null}
+                  </UserDetailsForm>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

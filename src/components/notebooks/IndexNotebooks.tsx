@@ -85,34 +85,38 @@ export default function IndexNotebooks() {
 
   return (
     <>
-      <div className={`${classes["grid-container"]}`}>
-        <h1 className={`${classes["grid-title"]}`}>רשימת פנקסים</h1>
-        <IndexEntity<notebookDTO>
-          btnLink="/notebooks/create"
-          btnText="הוספת פנקס"
-          options={options}
-          columns={columns}
-          onSorting={(e: any) => onSorting(e)}
-          url={urlNotebooks}
-          sortColumn={sortColumn}
-          sortType={sortType}
-        >
-          {(notebooks, buttons) => (
-            <tbody>
-              {notebooks?.map((notebook) => (
-                <tr key={notebook.id}>
-                  <td>{notebook.id}</td>
-                  <td>{notebook.number}</td>
-                  {buttons(
-                    notebook.id.toString(),
-                    `/notebooks/edit/${notebook.id}`,
-                    notebook.id
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          )}
-        </IndexEntity>
+      <div className="row">
+        <div className="col-lg-12">
+          <h1 className="page-header">רשימת פנקסים</h1>
+        </div>
+        <div className="col-lg-12">
+          <IndexEntity<notebookDTO>
+            btnLink="/notebooks/create"
+            btnText="הוספת פנקס"
+            options={options}
+            columns={columns}
+            onSorting={(e: any) => onSorting(e)}
+            url={urlNotebooks}
+            sortColumn={sortColumn}
+            sortType={sortType}
+          >
+            {(notebooks, buttons) => (
+              <tbody>
+                {notebooks?.map((notebook) => (
+                  <tr key={notebook.id}>
+                    <td>{notebook.id}</td>
+                    <td>{notebook.number}</td>
+                    {buttons(
+                      notebook.id.toString(),
+                      `/notebooks/edit/${notebook.id}`,
+                      notebook.id
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            )}
+          </IndexEntity>
+        </div>
       </div>
     </>
   );
