@@ -1,62 +1,47 @@
-import { useContext, useEffect, useState } from "react";
-import { searchResultsDTO } from "./search.models";
+import { useEffect, useState } from "react";
 import axios, { AxiosError, AxiosResponse } from "axios";
-
 import { urlSearch } from "../../endpoints";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { searchResultsDTO } from "./search.models";
+import SearchResultItem from "./SearchResultItem";
+import Loading from "../../utils/Loading";
 
 import classes from "./SearchResults.module.css";
-import Button from "../../utils/Button";
 
 export default function SearchResults() {
   const [data, setData] = useState<searchResultsDTO[]>([]);
   const { term }: any = useParams();
-  const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
-  const search = () => {
+  function search() {
     axios
       .get(`${urlSearch}/GetSearchResults/?term=${term}`)
       .then((response: AxiosResponse<searchResultsDTO[]>) => {
         setData(response.data);
+        setLoading(false);
       })
       .catch((error: AxiosError) => {
         console.log(error);
       });
-  };
+  }
 
   useEffect(() => {
     if (term) {
-      search();
+      setLoading(true);
+      setTimeout(() => {
+        search();
+      }, 2000);
     }
   }, [term]);
+
   return (
     <>
       <h1>תוצאות חיפוש</h1>
-
-      <div className="panel panel-default">
-        <div className="panel-heading">תוצאות חיפוש</div>
-        {/* <!-- /.panel-heading --> */}
-        <div className="panel-body">
-          <h4>תוצאות חיפוש</h4>
-          <div className={classes["tooltip-demo"]}>
-            {data.map((item: searchResultsDTO) => (
-              <Button
-                type="button"
-                className="btn btn-default"
-                data-toggle="tooltip"
-                data-placement="left"
-                title={item.title}
-                onClick={() => {
-                  history.push(item.link);
-                }}
-              >
-                {item.title}
-              </Button>
-            ))}
-          </div>
-          <br />
-        </div>
-        {/* <!-- .panel-body --> */}
+      {loading ? <Loading left="40%" top="40%" /> : null}
+      <div className={`grid ${classes["search-item-container"]} grid--6-cols`}>
+        {data.map((item: searchResultsDTO) => (
+          <SearchResultItem key={item.link} model={item} />
+        ))}
       </div>
     </>
   );

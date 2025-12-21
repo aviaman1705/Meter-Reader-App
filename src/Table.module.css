@@ -60,6 +60,7 @@
         align-items: center;
         justify-content: space-between
     }
+
     .operation-box .left-box .per-page-item {
         flex-basis: 110px;
         display: flex;
@@ -195,6 +196,10 @@
         .btn-grid-mobile-edit,
         .btn-grid-mobile-delete {
             display: none;
+        }
+
+        table th {
+            cursor: pointer;
         }
 
         table th,

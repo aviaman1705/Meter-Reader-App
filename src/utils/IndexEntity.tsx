@@ -34,6 +34,7 @@ export default function IndexEntity<T>(props: indexEntityProps<T>) {
   }, [
     page,
     itemsPerPage,
+    totalAmontOfPages,
     props.sortColumn,
     props.sortType,
     props.columns,
@@ -63,6 +64,8 @@ export default function IndexEntity<T>(props: indexEntityProps<T>) {
   };
 
   const onSearch = (event: any) => {
+    setPage(1);
+    setTotalAmontOfPages(1);
     setSearch(event.target.value);
   };
 

@@ -1,4 +1,5 @@
 export interface searchResultsDTO {
-    title: string;
+    type: string;
+    name: string;
     link: string;
 }

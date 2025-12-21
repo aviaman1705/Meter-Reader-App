@@ -1,4 +1,25 @@
-.tooltip-demo {
-    display: flex;
-    gap: 0.5rem;
+.btn,
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1.6rem 3.2rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-search-item:link,
+.btn-search-item:visited {
+    background-color: #099268;
+    color: #fff;
+}
+
+.btn-search-item:hover,
+.btn-search-item:active {
+    background-color: #fff;
+    color: #099268;
 }

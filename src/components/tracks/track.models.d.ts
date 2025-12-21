@@ -31,7 +31,6 @@ export interface trackGridItemDTO {
     unCalled: string;
     notebookNumber: number;
     desc: string;
-    fromDate: date;
-    toDate: date;
+    date: date;
     notebookId: number;
 }

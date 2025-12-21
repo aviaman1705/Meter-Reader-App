@@ -63,6 +63,40 @@ section {
     margin-bottom: 96px;
 }
 
+.grid {
+    display: grid;
+    column-gap: 6.4rem;
+    row-gap: 2.6rem;
+}
+
+.grid--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid--5-cols {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--6-cols {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.grid--7-cols {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.grid--8-cols {
+    grid-template-columns: repeat(8, 1fr);
+}
+
 /* ------------------------ */
 /* COMPONENT STYLES */
 /* ------------------------ */
@@ -108,4 +142,4 @@ button:hover {
     }
 }
 
- @media (min-width: 768px) {}
+@media (min-width: 768px) {}

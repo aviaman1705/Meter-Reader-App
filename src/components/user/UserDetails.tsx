@@ -7,8 +7,6 @@ import UserDetailsForm from "./UserDetailsForm";
 import DisplayErrors from "../../utils/DisplayErrors";
 import Loading from "../../utils/Loading";
 
-import classes from "./UserDetails.module.css";
-
 export default function UserDetails() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<[]>([]);

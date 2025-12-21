@@ -85,7 +85,7 @@ export default function IndexNotebooks() {
 
   return (
     <>
-      <div className="row">
+      {/* <div className="row">
         <div className="col-lg-12">
           <h1 className="page-header">רשימת פנקסים</h1>
         </div>
@@ -117,7 +117,7 @@ export default function IndexNotebooks() {
             )}
           </IndexEntity>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
