@@ -1,34 +1,35 @@
-import { Field, ErrorMessage } from "formik";
-
+import { useField } from "formik";
+import Input from "./Input";
 import classes from "./../../Form.module.css";
 
 export default function NumberField(props: textFieldProps) {
+  const [field, meta] = useField(props);
+
   return (
     <div className={classes["form-group"]}>
-      <label className={classes["form-label"]} htmlFor={props.field}>
-        {props.displayName}
-      </label>
-      <Field
-        id={props.field}
-        name={props.field}
+      <Input
+        id={props.name}
+        onBlur={field.onBlur}
+        onChange={field.onChange}
+        name={props.name}
+        label={props.label}
         type="number"
-        className="form-control"
-        placeholder={props.displayName}
+        invalid={meta.touched && meta.error}
+        className={
+          meta.touched && meta.error
+            ? "form-control " + classes["input-error"]
+            : "form-control"
+        }
+        defaultValue={props.name}
       />
-      <div>
-        <ErrorMessage name={props.field}>
-          {(msg: string) => (
-            <span id={`input-${props.field}-error`} className="text-danger">
-              {msg}
-            </span>
-          )}
-        </ErrorMessage>
-      </div>
+      {meta.touched && meta.error && (
+        <div className={classes["error"]}>{meta.error}</div>
+      )}
     </div>
   );
 }
 
 interface textFieldProps {
-  field: string;
-  displayName: string;
+  label: string;
+  name: string;
 }

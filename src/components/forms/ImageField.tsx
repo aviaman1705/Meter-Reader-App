@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
+import Input from "./Input";
 import { useField } from "formik";
 
 import classes from "../../Form.module.css";
@@ -30,14 +31,15 @@ export default function ImageField(props: imageFieldProps) {
 
   return (
     <div id={classes["image-form-container"]}>
-      <label htmlFor={props.name}>{props.label}</label>
-      <input
+      <Input
         id={props.name}
         name={props.name}
-        className={"form-control"}
+        className="form-control"
         type="file"
         accept="image/*"
         onChange={showPreview}
+        label={props.label}
+        invalid={false}
       />
 
       {imageURL ? (

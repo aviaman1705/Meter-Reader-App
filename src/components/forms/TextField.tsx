@@ -1,5 +1,5 @@
 import { useField } from "formik";
-
+import Input from "./Input";
 import classes from "./../../Form.module.css";
 
 export default function TextField(props: textFieldProps) {
@@ -7,18 +7,20 @@ export default function TextField(props: textFieldProps) {
 
   return (
     <div className={classes["form-group"]}>
-      <label htmlFor={props.name}>{props.label}</label>
-      <input
-        {...field}
+      <Input
         id={props.name}
-        type={props.type}
+        onBlur={field.onBlur}
+        onChange={field.onChange}
         name={props.name}
-        placeholder={props.placeholder}
+        label={props.label}
+        type={props.type}
+        invalid={meta.touched && meta.error}
         className={
           meta.touched && meta.error
             ? "form-control " + classes["input-error"]
             : "form-control"
         }
+        defaultValue={field.value}
       />
       {meta.touched && meta.error && (
         <div className={classes["error"]}>{meta.error}</div>

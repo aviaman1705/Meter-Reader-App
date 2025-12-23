@@ -9,7 +9,7 @@ export default function SelectField(props: selectFieldProps) {
 
   return (
     <div className={classes["form-group"]}>
-      <label>{props.label}</label>
+      <label htmlFor={field.name}>{props.label}</label>
       <select
         {...field}
         name={props.name}

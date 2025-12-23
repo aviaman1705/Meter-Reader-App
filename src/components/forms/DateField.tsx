@@ -1,5 +1,5 @@
 import { useField } from "formik";
-
+import Input from "./Input";
 import classes from "./../../Form.module.css";
 
 export default function DateField(props: dateFieldProps) {
@@ -11,15 +11,14 @@ export default function DateField(props: dateFieldProps) {
 
   return (
     <div className={classes["form-group"]}>
-      <label className={classes["form-label"]} htmlFor={props.name}>
-        {props.label}
-      </label>
-      <input
+      <Input
         id={props.name}
         onBlur={field.onBlur}
         onChange={field.onChange}
         name={props.name}
+        label={props.label}
         type="date"
+        invalid={meta.touched && meta.error}
         className={
           meta.touched && meta.error
             ? "form-control " + classes["input-error"]
